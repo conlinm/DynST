@@ -1,0 +1,632 @@
+/content/drive/MyDrive/dl4h_project/DynST/run.py:12: UserWarning: 
+The version_base parameter is not specified.
+Please specify a compatability version level, or None.
+Will assume defaults for version 1.1
+  @hydra.main(config_path=".", config_name="config.yaml")
+[2023-04-16 19:19:32,399][HYDRA] Launching 6 jobs locally
+[2023-04-16 19:19:32,399][HYDRA] 	#0 : model.d_model=32 model.alpha=0
+/usr/local/lib/python3.9/dist-packages/hydra/_internal/core_plugins/basic_launcher.py:74: UserWarning: Future Hydra versions will no longer change working directory at job runtime by default.
+See https://hydra.cc/docs/1.2/upgrades/1.1_to_1.2/changes_to_job_working_dir/ for more information.
+  ret = run_job(
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+You are using a CUDA device ('NVIDIA A100-SXM4-40GB') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
+Missing logger folder: /content/drive/MyDrive/dl4h_project/DynST/multirun/2023-04-16/19-19-31/0/0/lightning_logs
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+
+   | Name         | Type               | Params
+-----------------------------------------------------
+0  | embed_codes  | Linear             | 16.6 K
+1  | embed_static | Linear             | 1.2 K 
+2  | embed_vitals | Linear             | 832   
+3  | pos_encode   | PositionalEncoding | 0     
+4  | transformer  | TransformerEncoder | 38.2 K
+5  | to_hazard_c  | Sequential         | 545   
+6  | train_mae    | MeanAbsoluteError  | 0     
+7  | val_mae      | MeanAbsoluteError  | 0     
+8  | val_ci       | ConcordanceIndex   | 0     
+9  | test_mae     | MeanAbsoluteError  | 0     
+10 | test_ci      | ConcordanceIndex   | 0     
+-----------------------------------------------------
+57.3 K    Trainable params
+0         Non-trainable params
+57.3 K    Total params
+0.229     Total estimated model params size (MB)
+2023-04-16 19:19:33.542718: I tensorflow/core/util/port.cc:110] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2023-04-16 19:19:33.600415: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-04-16 19:19:34.574981: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+Sanity Checking: 0it [00:00, ?it/s]/usr/local/lib/python3.9/dist-packages/pytorch_lightning/trainer/connectors/data_connector.py:430: PossibleUserWarning: The dataloader, val_dataloader, does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` (try 12 which is the number of cpus on this machine) in the `DataLoader` init to improve performance.
+  rank_zero_warn(
+/content/drive/MyDrive/dl4h_project/DynST/src/dataset.py:39: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  item["codes"] = torch.tensor(
+Sanity Checking DataLoader 0:   0% 0/2 [00:00<?, ?it/s]/usr/local/lib/python3.9/dist-packages/torch/nn/functional.py:4999: UserWarning: Support for mismatched src_key_padding_mask and src_mask is deprecated. Use same type for both instead.
+  warnings.warn(
+/usr/local/lib/python3.9/dist-packages/torch/nn/modules/transformer.py:544: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at ../aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/usr/local/lib/python3.9/dist-packages/pytorch_lightning/trainer/connectors/data_connector.py:430: PossibleUserWarning: The dataloader, train_dataloader, does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` (try 12 which is the number of cpus on this machine) in the `DataLoader` init to improve performance.
+  rank_zero_warn(
+Epoch 0:   0% 0/664 [00:00<?, ?it/s] /usr/local/lib/python3.9/dist-packages/torch/nn/functional.py:4999: UserWarning: Support for mismatched key_padding_mask and attn_mask is deprecated. Use same type for both instead.
+  warnings.warn(
+Epoch 0: 100% 664/664 [02:05<00:00,  5.30it/s, v_num=0]
+Validation: 0it [00:00, ?it/s]
+Validation:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:  14% 20/143 [00:03<00:20,  5.89it/s]
+Validation DataLoader 0:  28% 40/143 [00:06<00:17,  5.76it/s]
+Validation DataLoader 0:  42% 60/143 [00:10<00:14,  5.72it/s]
+Validation DataLoader 0:  56% 80/143 [00:14<00:11,  5.70it/s]
+Validation DataLoader 0:  70% 100/143 [00:17<00:07,  5.67it/s]
+Validation DataLoader 0:  84% 120/143 [00:21<00:04,  5.66it/s]
+Validation DataLoader 0:  98% 140/143 [00:24<00:00,  5.65it/s]
+Epoch 0: 100% 664/664 [02:30<00:00,  4.41it/s, v_num=0]
+Epoch 1: 100% 664/664 [02:04<00:00,  5.32it/s, v_num=0]
+Validation: 0it [00:00, ?it/s]
+Validation:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:  14% 20/143 [00:03<00:20,  5.89it/s]
+Validation DataLoader 0:  28% 40/143 [00:06<00:17,  5.74it/s]
+Validation DataLoader 0:  42% 60/143 [00:10<00:14,  5.69it/s]
+Validation DataLoader 0:  56% 80/143 [00:14<00:11,  5.68it/s]
+Validation DataLoader 0:  70% 100/143 [00:17<00:07,  5.68it/s]
+Validation DataLoader 0:  84% 120/143 [00:21<00:04,  5.67it/s]
+Validation DataLoader 0:  98% 140/143 [00:24<00:00,  5.66it/s]
+Epoch 1: 100% 664/664 [02:30<00:00,  4.42it/s, v_num=0]
+Epoch 2: 100% 664/664 [02:05<00:00,  5.30it/s, v_num=0]
+Validation: 0it [00:00, ?it/s]
+Validation:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:  14% 20/143 [00:03<00:20,  5.93it/s]
+Validation DataLoader 0:  28% 40/143 [00:06<00:17,  5.79it/s]
+Validation DataLoader 0:  42% 60/143 [00:10<00:14,  5.70it/s]
+Validation DataLoader 0:  56% 80/143 [00:14<00:11,  5.68it/s]
+Validation DataLoader 0:  70% 100/143 [00:17<00:07,  5.67it/s]
+Validation DataLoader 0:  84% 120/143 [00:21<00:04,  5.65it/s]
+Validation DataLoader 0:  98% 140/143 [00:24<00:00,  5.64it/s]
+Epoch 2: 100% 664/664 [02:30<00:00,  4.41it/s, v_num=0]
+Epoch 3: 100% 664/664 [02:04<00:00,  5.32it/s, v_num=0]
+Validation: 0it [00:00, ?it/s]
+Validation:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:  14% 20/143 [00:03<00:20,  5.88it/s]
+Validation DataLoader 0:  28% 40/143 [00:06<00:17,  5.77it/s]
+Validation DataLoader 0:  42% 60/143 [00:10<00:14,  5.73it/s]
+Validation DataLoader 0:  56% 80/143 [00:14<00:11,  5.69it/s]
+Validation DataLoader 0:  70% 100/143 [00:17<00:07,  5.68it/s]
+Validation DataLoader 0:  84% 120/143 [00:21<00:04,  5.68it/s]
+Validation DataLoader 0:  98% 140/143 [00:24<00:00,  5.66it/s]
+Epoch 3: 100% 664/664 [02:30<00:00,  4.42it/s, v_num=0]
+Epoch 4: 100% 664/664 [02:04<00:00,  5.32it/s, v_num=0]
+Validation: 0it [00:00, ?it/s]
+Validation:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:  14% 20/143 [00:03<00:20,  5.89it/s]
+Validation DataLoader 0:  28% 40/143 [00:06<00:17,  5.77it/s]
+Validation DataLoader 0:  42% 60/143 [00:10<00:14,  5.73it/s]
+Validation DataLoader 0:  56% 80/143 [00:14<00:11,  5.70it/s]
+Validation DataLoader 0:  70% 100/143 [00:17<00:07,  5.69it/s]
+Validation DataLoader 0:  84% 120/143 [00:21<00:04,  5.67it/s]
+Validation DataLoader 0:  98% 140/143 [00:24<00:00,  5.66it/s]
+Epoch 4: 100% 664/664 [02:30<00:00,  4.42it/s, v_num=0]
+Epoch 4: 100% 664/664 [02:30<00:00,  4.42it/s, v_num=0]`Trainer.fit` stopped: `max_epochs=5` reached.
+Epoch 4: 100% 664/664 [02:30<00:00,  4.42it/s, v_num=0]
+/usr/local/lib/python3.9/dist-packages/pytorch_lightning/trainer/connectors/checkpoint_connector.py:148: UserWarning: `.test(ckpt_path=None)` was called without a model. The best model of the previous `fit` call will be used. You can pass `.test(ckpt_path='best')` to use the best model or `.test(ckpt_path='last')` to use the last model. If you pass a value, this warning will be silenced.
+  rank_zero_warn(
+You are using a CUDA device ('NVIDIA A100-SXM4-40GB') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
+Restoring states from the checkpoint path at /content/drive/MyDrive/dl4h_project/DynST/multirun/2023-04-16/19-19-31/0/0/lightning_logs/version_0/checkpoints/epoch=4-step=3320.ckpt
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Loaded model weights from the checkpoint at /content/drive/MyDrive/dl4h_project/DynST/multirun/2023-04-16/19-19-31/0/0/lightning_logs/version_0/checkpoints/epoch=4-step=3320.ckpt
+/usr/local/lib/python3.9/dist-packages/pytorch_lightning/trainer/connectors/data_connector.py:430: PossibleUserWarning: The dataloader, test_dataloader, does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` (try 12 which is the number of cpus on this machine) in the `DataLoader` init to improve performance.
+  rank_zero_warn(
+Testing DataLoader 0: 100% 143/143 [00:24<00:00,  5.72it/s]
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│       test_ci_epoch       │    0.6938294768333435     │
+│      test_mae_epoch       │    11.709083557128906     │
+└───────────────────────────┴───────────────────────────┘
+[2023-04-16 19:32:33,369][HYDRA] 	#1 : model.d_model=32 model.alpha=0.1
+/usr/local/lib/python3.9/dist-packages/hydra/_internal/core_plugins/basic_launcher.py:74: UserWarning: Future Hydra versions will no longer change working directory at job runtime by default.
+See https://hydra.cc/docs/1.2/upgrades/1.1_to_1.2/changes_to_job_working_dir/ for more information.
+  ret = run_job(
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+You are using a CUDA device ('NVIDIA A100-SXM4-40GB') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
+Missing logger folder: /content/drive/MyDrive/dl4h_project/DynST/multirun/2023-04-16/19-19-31/0/1/lightning_logs
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+
+   | Name         | Type               | Params
+-----------------------------------------------------
+0  | embed_codes  | Linear             | 16.6 K
+1  | embed_static | Linear             | 1.2 K 
+2  | embed_vitals | Linear             | 832   
+3  | pos_encode   | PositionalEncoding | 0     
+4  | transformer  | TransformerEncoder | 38.2 K
+5  | to_hazard_c  | Sequential         | 545   
+6  | train_mae    | MeanAbsoluteError  | 0     
+7  | val_mae      | MeanAbsoluteError  | 0     
+8  | val_ci       | ConcordanceIndex   | 0     
+9  | test_mae     | MeanAbsoluteError  | 0     
+10 | test_ci      | ConcordanceIndex   | 0     
+-----------------------------------------------------
+57.3 K    Trainable params
+0         Non-trainable params
+57.3 K    Total params
+0.229     Total estimated model params size (MB)
+Epoch 0: 100% 664/664 [02:05<00:00,  5.31it/s, v_num=0]
+Validation: 0it [00:00, ?it/s]
+Validation:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:  14% 20/143 [00:03<00:20,  5.92it/s]
+Validation DataLoader 0:  28% 40/143 [00:06<00:17,  5.76it/s]
+Validation DataLoader 0:  42% 60/143 [00:10<00:14,  5.71it/s]
+Validation DataLoader 0:  56% 80/143 [00:14<00:11,  5.70it/s]
+Validation DataLoader 0:  70% 100/143 [00:17<00:07,  5.69it/s]
+Validation DataLoader 0:  84% 120/143 [00:21<00:04,  5.68it/s]
+Validation DataLoader 0:  98% 140/143 [00:24<00:00,  5.66it/s]
+Epoch 0: 100% 664/664 [02:30<00:00,  4.41it/s, v_num=0]
+Epoch 1: 100% 664/664 [02:04<00:00,  5.32it/s, v_num=0]
+Validation: 0it [00:00, ?it/s]
+Validation:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:  14% 20/143 [00:03<00:20,  5.97it/s]
+Validation DataLoader 0:  28% 40/143 [00:06<00:17,  5.82it/s]
+Validation DataLoader 0:  42% 60/143 [00:10<00:14,  5.75it/s]
+Validation DataLoader 0:  56% 80/143 [00:13<00:10,  5.74it/s]
+Validation DataLoader 0:  70% 100/143 [00:17<00:07,  5.73it/s]
+Validation DataLoader 0:  84% 120/143 [00:21<00:04,  5.71it/s]
+Validation DataLoader 0:  98% 140/143 [00:24<00:00,  5.70it/s]
+Epoch 1: 100% 664/664 [02:29<00:00,  4.43it/s, v_num=0]
+Epoch 2: 100% 664/664 [02:05<00:00,  5.31it/s, v_num=0]
+Validation: 0it [00:00, ?it/s]
+Validation:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:  14% 20/143 [00:03<00:20,  5.96it/s]
+Validation DataLoader 0:  28% 40/143 [00:06<00:17,  5.82it/s]
+Validation DataLoader 0:  42% 60/143 [00:10<00:14,  5.77it/s]
+Validation DataLoader 0:  56% 80/143 [00:13<00:10,  5.73it/s]
+Validation DataLoader 0:  70% 100/143 [00:17<00:07,  5.70it/s]
+Validation DataLoader 0:  84% 120/143 [00:21<00:04,  5.69it/s]
+Validation DataLoader 0:  98% 140/143 [00:24<00:00,  5.65it/s]
+Epoch 2: 100% 664/664 [02:30<00:00,  4.41it/s, v_num=0]
+Epoch 3: 100% 664/664 [02:04<00:00,  5.32it/s, v_num=0]
+Validation: 0it [00:00, ?it/s]
+Validation:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:  14% 20/143 [00:03<00:20,  5.92it/s]
+Validation DataLoader 0:  28% 40/143 [00:06<00:17,  5.80it/s]
+Validation DataLoader 0:  42% 60/143 [00:10<00:14,  5.76it/s]
+Validation DataLoader 0:  56% 80/143 [00:13<00:11,  5.72it/s]
+Validation DataLoader 0:  70% 100/143 [00:17<00:07,  5.70it/s]
+Validation DataLoader 0:  84% 120/143 [00:21<00:04,  5.69it/s]
+Validation DataLoader 0:  98% 140/143 [00:24<00:00,  5.69it/s]
+Epoch 3: 100% 664/664 [02:29<00:00,  4.43it/s, v_num=0]
+Epoch 4: 100% 664/664 [02:04<00:00,  5.32it/s, v_num=0]
+Validation: 0it [00:00, ?it/s]
+Validation:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:  14% 20/143 [00:03<00:20,  5.92it/s]
+Validation DataLoader 0:  28% 40/143 [00:06<00:17,  5.79it/s]
+Validation DataLoader 0:  42% 60/143 [00:10<00:14,  5.75it/s]
+Validation DataLoader 0:  56% 80/143 [00:13<00:10,  5.73it/s]
+Validation DataLoader 0:  70% 100/143 [00:17<00:07,  5.71it/s]
+Validation DataLoader 0:  84% 120/143 [00:21<00:04,  5.71it/s]
+Validation DataLoader 0:  98% 140/143 [00:24<00:00,  5.68it/s]
+Epoch 4: 100% 664/664 [02:30<00:00,  4.42it/s, v_num=0]
+Epoch 4: 100% 664/664 [02:30<00:00,  4.42it/s, v_num=0]`Trainer.fit` stopped: `max_epochs=5` reached.
+Epoch 4: 100% 664/664 [02:30<00:00,  4.42it/s, v_num=0]
+You are using a CUDA device ('NVIDIA A100-SXM4-40GB') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
+Restoring states from the checkpoint path at /content/drive/MyDrive/dl4h_project/DynST/multirun/2023-04-16/19-19-31/0/1/lightning_logs/version_0/checkpoints/epoch=2-step=1992.ckpt
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Loaded model weights from the checkpoint at /content/drive/MyDrive/dl4h_project/DynST/multirun/2023-04-16/19-19-31/0/1/lightning_logs/version_0/checkpoints/epoch=2-step=1992.ckpt
+Testing DataLoader 0: 100% 143/143 [00:24<00:00,  5.75it/s]
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│       test_ci_epoch       │    0.7110733389854431     │
+│      test_mae_epoch       │    11.352721214294434     │
+└───────────────────────────┴───────────────────────────┘
+[2023-04-16 19:45:30,541][HYDRA] 	#2 : model.d_model=32 model.alpha=0.2
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+You are using a CUDA device ('NVIDIA A100-SXM4-40GB') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
+Missing logger folder: /content/drive/MyDrive/dl4h_project/DynST/multirun/2023-04-16/19-19-31/0/2/lightning_logs
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+
+   | Name         | Type               | Params
+-----------------------------------------------------
+0  | embed_codes  | Linear             | 16.6 K
+1  | embed_static | Linear             | 1.2 K 
+2  | embed_vitals | Linear             | 832   
+3  | pos_encode   | PositionalEncoding | 0     
+4  | transformer  | TransformerEncoder | 38.2 K
+5  | to_hazard_c  | Sequential         | 545   
+6  | train_mae    | MeanAbsoluteError  | 0     
+7  | val_mae      | MeanAbsoluteError  | 0     
+8  | val_ci       | ConcordanceIndex   | 0     
+9  | test_mae     | MeanAbsoluteError  | 0     
+10 | test_ci      | ConcordanceIndex   | 0     
+-----------------------------------------------------
+57.3 K    Trainable params
+0         Non-trainable params
+57.3 K    Total params
+0.229     Total estimated model params size (MB)
+Epoch 0: 100% 664/664 [02:04<00:00,  5.31it/s, v_num=0]
+Validation: 0it [00:00, ?it/s]
+Validation:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:  14% 20/143 [00:03<00:20,  5.95it/s]
+Validation DataLoader 0:  28% 40/143 [00:06<00:17,  5.77it/s]
+Validation DataLoader 0:  42% 60/143 [00:10<00:14,  5.72it/s]
+Validation DataLoader 0:  56% 80/143 [00:14<00:11,  5.71it/s]
+Validation DataLoader 0:  70% 100/143 [00:17<00:07,  5.70it/s]
+Validation DataLoader 0:  84% 120/143 [00:21<00:04,  5.68it/s]
+Validation DataLoader 0:  98% 140/143 [00:24<00:00,  5.68it/s]
+Epoch 0: 100% 664/664 [02:30<00:00,  4.42it/s, v_num=0]
+Epoch 1: 100% 664/664 [02:04<00:00,  5.33it/s, v_num=0]
+Validation: 0it [00:00, ?it/s]
+Validation:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:  14% 20/143 [00:03<00:20,  5.87it/s]
+Validation DataLoader 0:  28% 40/143 [00:06<00:17,  5.73it/s]
+Validation DataLoader 0:  42% 60/143 [00:10<00:14,  5.67it/s]
+Validation DataLoader 0:  56% 80/143 [00:14<00:11,  5.67it/s]
+Validation DataLoader 0:  70% 100/143 [00:17<00:07,  5.67it/s]
+Validation DataLoader 0:  84% 120/143 [00:21<00:04,  5.66it/s]
+Validation DataLoader 0:  98% 140/143 [00:24<00:00,  5.66it/s]
+Epoch 1: 100% 664/664 [02:29<00:00,  4.43it/s, v_num=0]
+Epoch 2: 100% 664/664 [02:04<00:00,  5.33it/s, v_num=0]
+Validation: 0it [00:00, ?it/s]
+Validation:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:  14% 20/143 [00:03<00:20,  5.86it/s]
+Validation DataLoader 0:  28% 40/143 [00:06<00:17,  5.77it/s]
+Validation DataLoader 0:  42% 60/143 [00:10<00:14,  5.74it/s]
+Validation DataLoader 0:  56% 80/143 [00:14<00:11,  5.70it/s]
+Validation DataLoader 0:  70% 100/143 [00:17<00:07,  5.69it/s]
+Validation DataLoader 0:  84% 120/143 [00:21<00:04,  5.69it/s]
+Validation DataLoader 0:  98% 140/143 [00:24<00:00,  5.67it/s]
+Epoch 2: 100% 664/664 [02:29<00:00,  4.43it/s, v_num=0]
+Epoch 3: 100% 664/664 [02:04<00:00,  5.33it/s, v_num=0]
+Validation: 0it [00:00, ?it/s]
+Validation:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:  14% 20/143 [00:03<00:20,  5.89it/s]
+Validation DataLoader 0:  28% 40/143 [00:06<00:18,  5.72it/s]
+Validation DataLoader 0:  42% 60/143 [00:10<00:14,  5.68it/s]
+Validation DataLoader 0:  56% 80/143 [00:14<00:11,  5.66it/s]
+Validation DataLoader 0:  70% 100/143 [00:17<00:07,  5.65it/s]
+Validation DataLoader 0:  84% 120/143 [00:21<00:04,  5.64it/s]
+Validation DataLoader 0:  98% 140/143 [00:24<00:00,  5.65it/s]
+Epoch 3: 100% 664/664 [02:29<00:00,  4.43it/s, v_num=0]
+Epoch 4: 100% 664/664 [02:04<00:00,  5.33it/s, v_num=0]
+Validation: 0it [00:00, ?it/s]
+Validation:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:  14% 20/143 [00:03<00:20,  5.95it/s]
+Validation DataLoader 0:  28% 40/143 [00:06<00:17,  5.77it/s]
+Validation DataLoader 0:  42% 60/143 [00:10<00:14,  5.72it/s]
+Validation DataLoader 0:  56% 80/143 [00:14<00:11,  5.70it/s]
+Validation DataLoader 0:  70% 100/143 [00:17<00:07,  5.70it/s]
+Validation DataLoader 0:  84% 120/143 [00:21<00:04,  5.68it/s]
+Validation DataLoader 0:  98% 140/143 [00:24<00:00,  5.68it/s]
+Epoch 4: 100% 664/664 [02:29<00:00,  4.43it/s, v_num=0]
+Epoch 4: 100% 664/664 [02:29<00:00,  4.43it/s, v_num=0]`Trainer.fit` stopped: `max_epochs=5` reached.
+Epoch 4: 100% 664/664 [02:29<00:00,  4.43it/s, v_num=0]
+You are using a CUDA device ('NVIDIA A100-SXM4-40GB') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
+Restoring states from the checkpoint path at /content/drive/MyDrive/dl4h_project/DynST/multirun/2023-04-16/19-19-31/0/2/lightning_logs/version_0/checkpoints/epoch=2-step=1992.ckpt
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Loaded model weights from the checkpoint at /content/drive/MyDrive/dl4h_project/DynST/multirun/2023-04-16/19-19-31/0/2/lightning_logs/version_0/checkpoints/epoch=2-step=1992.ckpt
+Testing DataLoader 0: 100% 143/143 [00:24<00:00,  5.72it/s]
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│       test_ci_epoch       │    0.7144995331764221     │
+│      test_mae_epoch       │    11.175790786743164     │
+└───────────────────────────┴───────────────────────────┘
+[2023-04-16 19:58:26,507][HYDRA] 	#3 : model.d_model=64 model.alpha=0
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+You are using a CUDA device ('NVIDIA A100-SXM4-40GB') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
+Missing logger folder: /content/drive/MyDrive/dl4h_project/DynST/multirun/2023-04-16/19-19-31/0/3/lightning_logs
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+
+   | Name         | Type               | Params
+-----------------------------------------------------
+0  | embed_codes  | Linear             | 33.2 K
+1  | embed_static | Linear             | 4.4 K 
+2  | embed_vitals | Linear             | 1.7 K 
+3  | pos_encode   | PositionalEncoding | 0     
+4  | transformer  | TransformerEncoder | 150 K 
+5  | to_hazard_c  | Sequential         | 2.1 K 
+6  | train_mae    | MeanAbsoluteError  | 0     
+7  | val_mae      | MeanAbsoluteError  | 0     
+8  | val_ci       | ConcordanceIndex   | 0     
+9  | test_mae     | MeanAbsoluteError  | 0     
+10 | test_ci      | ConcordanceIndex   | 0     
+-----------------------------------------------------
+191 K     Trainable params
+0         Non-trainable params
+191 K     Total params
+0.765     Total estimated model params size (MB)
+Epoch 0: 100% 664/664 [02:05<00:00,  5.30it/s, v_num=0]
+Validation: 0it [00:00, ?it/s]
+Validation:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:  14% 20/143 [00:03<00:20,  5.95it/s]
+Validation DataLoader 0:  28% 40/143 [00:06<00:17,  5.79it/s]
+Validation DataLoader 0:  42% 60/143 [00:10<00:14,  5.72it/s]
+Validation DataLoader 0:  56% 80/143 [00:14<00:11,  5.71it/s]
+Validation DataLoader 0:  70% 100/143 [00:17<00:07,  5.70it/s]
+Validation DataLoader 0:  84% 120/143 [00:21<00:04,  5.69it/s]
+Validation DataLoader 0:  98% 140/143 [00:24<00:00,  5.68it/s]
+Epoch 0: 100% 664/664 [02:30<00:00,  4.41it/s, v_num=0]
+Epoch 1: 100% 664/664 [02:05<00:00,  5.31it/s, v_num=0]
+Validation: 0it [00:00, ?it/s]
+Validation:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:  14% 20/143 [00:03<00:20,  5.89it/s]
+Validation DataLoader 0:  28% 40/143 [00:06<00:17,  5.74it/s]
+Validation DataLoader 0:  42% 60/143 [00:10<00:14,  5.69it/s]
+Validation DataLoader 0:  56% 80/143 [00:14<00:11,  5.65it/s]
+Validation DataLoader 0:  70% 100/143 [00:17<00:07,  5.65it/s]
+Validation DataLoader 0:  84% 120/143 [00:21<00:04,  5.65it/s]
+Validation DataLoader 0:  98% 140/143 [00:24<00:00,  5.64it/s]
+Epoch 1: 100% 664/664 [02:30<00:00,  4.41it/s, v_num=0]
+Epoch 2: 100% 664/664 [02:04<00:00,  5.31it/s, v_num=0]
+Validation: 0it [00:00, ?it/s]
+Validation:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:  14% 20/143 [00:03<00:21,  5.86it/s]
+Validation DataLoader 0:  28% 40/143 [00:06<00:17,  5.75it/s]
+Validation DataLoader 0:  42% 60/143 [00:10<00:14,  5.70it/s]
+Validation DataLoader 0:  56% 80/143 [00:14<00:11,  5.68it/s]
+Validation DataLoader 0:  70% 100/143 [00:17<00:07,  5.67it/s]
+Validation DataLoader 0:  84% 120/143 [00:21<00:04,  5.66it/s]
+Validation DataLoader 0:  98% 140/143 [00:24<00:00,  5.66it/s]
+Epoch 2: 100% 664/664 [02:30<00:00,  4.42it/s, v_num=0]
+Epoch 3: 100% 664/664 [02:05<00:00,  5.30it/s, v_num=0]
+Validation: 0it [00:00, ?it/s]
+Validation:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:  14% 20/143 [00:03<00:20,  5.93it/s]
+Validation DataLoader 0:  28% 40/143 [00:06<00:17,  5.77it/s]
+Validation DataLoader 0:  42% 60/143 [00:10<00:14,  5.73it/s]
+Validation DataLoader 0:  56% 80/143 [00:14<00:11,  5.70it/s]
+Validation DataLoader 0:  70% 100/143 [00:17<00:07,  5.68it/s]
+Validation DataLoader 0:  84% 120/143 [00:21<00:04,  5.67it/s]
+Validation DataLoader 0:  98% 140/143 [00:24<00:00,  5.66it/s]
+Epoch 3: 100% 664/664 [02:30<00:00,  4.41it/s, v_num=0]
+Epoch 4: 100% 664/664 [02:05<00:00,  5.30it/s, v_num=0]
+Validation: 0it [00:00, ?it/s]
+Validation:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:  14% 20/143 [00:03<00:20,  5.88it/s]
+Validation DataLoader 0:  28% 40/143 [00:06<00:18,  5.72it/s]
+Validation DataLoader 0:  42% 60/143 [00:10<00:14,  5.67it/s]
+Validation DataLoader 0:  56% 80/143 [00:14<00:11,  5.66it/s]
+Validation DataLoader 0:  70% 100/143 [00:17<00:07,  5.65it/s]
+Validation DataLoader 0:  84% 120/143 [00:21<00:04,  5.64it/s]
+Validation DataLoader 0:  98% 140/143 [00:24<00:00,  5.63it/s]
+Epoch 4: 100% 664/664 [02:30<00:00,  4.41it/s, v_num=0]
+Epoch 4: 100% 664/664 [02:30<00:00,  4.41it/s, v_num=0]`Trainer.fit` stopped: `max_epochs=5` reached.
+Epoch 4: 100% 664/664 [02:30<00:00,  4.41it/s, v_num=0]
+You are using a CUDA device ('NVIDIA A100-SXM4-40GB') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
+Restoring states from the checkpoint path at /content/drive/MyDrive/dl4h_project/DynST/multirun/2023-04-16/19-19-31/0/3/lightning_logs/version_0/checkpoints/epoch=3-step=2656.ckpt
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Loaded model weights from the checkpoint at /content/drive/MyDrive/dl4h_project/DynST/multirun/2023-04-16/19-19-31/0/3/lightning_logs/version_0/checkpoints/epoch=3-step=2656.ckpt
+Testing DataLoader 0: 100% 143/143 [00:25<00:00,  5.70it/s]
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│       test_ci_epoch       │    0.6872921586036682     │
+│      test_mae_epoch       │     11.98781967163086     │
+└───────────────────────────┴───────────────────────────┘
+[2023-04-16 20:11:25,334][HYDRA] 	#4 : model.d_model=64 model.alpha=0.1
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+You are using a CUDA device ('NVIDIA A100-SXM4-40GB') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
+Missing logger folder: /content/drive/MyDrive/dl4h_project/DynST/multirun/2023-04-16/19-19-31/0/4/lightning_logs
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+
+   | Name         | Type               | Params
+-----------------------------------------------------
+0  | embed_codes  | Linear             | 33.2 K
+1  | embed_static | Linear             | 4.4 K 
+2  | embed_vitals | Linear             | 1.7 K 
+3  | pos_encode   | PositionalEncoding | 0     
+4  | transformer  | TransformerEncoder | 150 K 
+5  | to_hazard_c  | Sequential         | 2.1 K 
+6  | train_mae    | MeanAbsoluteError  | 0     
+7  | val_mae      | MeanAbsoluteError  | 0     
+8  | val_ci       | ConcordanceIndex   | 0     
+9  | test_mae     | MeanAbsoluteError  | 0     
+10 | test_ci      | ConcordanceIndex   | 0     
+-----------------------------------------------------
+191 K     Trainable params
+0         Non-trainable params
+191 K     Total params
+0.765     Total estimated model params size (MB)
+Epoch 0: 100% 664/664 [02:05<00:00,  5.31it/s, v_num=0]
+Validation: 0it [00:00, ?it/s]
+Validation:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:  14% 20/143 [00:03<00:20,  5.95it/s]
+Validation DataLoader 0:  28% 40/143 [00:06<00:17,  5.80it/s]
+Validation DataLoader 0:  42% 60/143 [00:10<00:14,  5.73it/s]
+Validation DataLoader 0:  56% 80/143 [00:14<00:11,  5.71it/s]
+Validation DataLoader 0:  70% 100/143 [00:17<00:07,  5.70it/s]
+Validation DataLoader 0:  84% 120/143 [00:21<00:04,  5.68it/s]
+Validation DataLoader 0:  98% 140/143 [00:24<00:00,  5.67it/s]
+Epoch 0: 100% 664/664 [02:30<00:00,  4.41it/s, v_num=0]
+Epoch 1: 100% 664/664 [02:05<00:00,  5.31it/s, v_num=0]
+Validation: 0it [00:00, ?it/s]
+Validation:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:  14% 20/143 [00:03<00:20,  5.86it/s]
+Validation DataLoader 0:  28% 40/143 [00:06<00:17,  5.75it/s]
+Validation DataLoader 0:  42% 60/143 [00:10<00:14,  5.70it/s]
+Validation DataLoader 0:  56% 80/143 [00:14<00:11,  5.68it/s]
+Validation DataLoader 0:  70% 100/143 [00:17<00:07,  5.67it/s]
+Validation DataLoader 0:  84% 120/143 [00:21<00:04,  5.67it/s]
+Validation DataLoader 0:  98% 140/143 [00:24<00:00,  5.66it/s]
+Epoch 1: 100% 664/664 [02:30<00:00,  4.41it/s, v_num=0]
+Epoch 2: 100% 664/664 [02:05<00:00,  5.29it/s, v_num=0]
+Validation: 0it [00:00, ?it/s]
+Validation:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:  14% 20/143 [00:03<00:20,  5.90it/s]
+Validation DataLoader 0:  28% 40/143 [00:06<00:17,  5.75it/s]
+Validation DataLoader 0:  42% 60/143 [00:10<00:14,  5.71it/s]
+Validation DataLoader 0:  56% 80/143 [00:14<00:11,  5.68it/s]
+Validation DataLoader 0:  70% 100/143 [00:17<00:07,  5.65it/s]
+Validation DataLoader 0:  84% 120/143 [00:21<00:04,  5.64it/s]
+Validation DataLoader 0:  98% 140/143 [00:24<00:00,  5.64it/s]
+Epoch 2: 100% 664/664 [02:30<00:00,  4.40it/s, v_num=0]
+Epoch 3: 100% 664/664 [02:05<00:00,  5.29it/s, v_num=0]
+Validation: 0it [00:00, ?it/s]
+Validation:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:  14% 20/143 [00:03<00:20,  5.88it/s]
+Validation DataLoader 0:  28% 40/143 [00:06<00:17,  5.72it/s]
+Validation DataLoader 0:  42% 60/143 [00:10<00:14,  5.68it/s]
+Validation DataLoader 0:  56% 80/143 [00:14<00:11,  5.66it/s]
+Validation DataLoader 0:  70% 100/143 [00:17<00:07,  5.63it/s]
+Validation DataLoader 0:  84% 120/143 [00:21<00:04,  5.63it/s]
+Validation DataLoader 0:  98% 140/143 [00:24<00:00,  5.64it/s]
+Epoch 3: 100% 664/664 [02:30<00:00,  4.40it/s, v_num=0]
+Epoch 4: 100% 664/664 [02:05<00:00,  5.30it/s, v_num=0]
+Validation: 0it [00:00, ?it/s]
+Validation:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:  14% 20/143 [00:03<00:20,  5.95it/s]
+Validation DataLoader 0:  28% 40/143 [00:06<00:17,  5.75it/s]
+Validation DataLoader 0:  42% 60/143 [00:10<00:14,  5.72it/s]
+Validation DataLoader 0:  56% 80/143 [00:14<00:11,  5.70it/s]
+Validation DataLoader 0:  70% 100/143 [00:17<00:07,  5.69it/s]
+Validation DataLoader 0:  84% 120/143 [00:21<00:04,  5.68it/s]
+Validation DataLoader 0:  98% 140/143 [00:24<00:00,  5.68it/s]
+Epoch 4: 100% 664/664 [02:30<00:00,  4.41it/s, v_num=0]
+Epoch 4: 100% 664/664 [02:30<00:00,  4.41it/s, v_num=0]`Trainer.fit` stopped: `max_epochs=5` reached.
+Epoch 4: 100% 664/664 [02:30<00:00,  4.41it/s, v_num=0]
+You are using a CUDA device ('NVIDIA A100-SXM4-40GB') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
+Restoring states from the checkpoint path at /content/drive/MyDrive/dl4h_project/DynST/multirun/2023-04-16/19-19-31/0/4/lightning_logs/version_0/checkpoints/epoch=4-step=3320.ckpt
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Loaded model weights from the checkpoint at /content/drive/MyDrive/dl4h_project/DynST/multirun/2023-04-16/19-19-31/0/4/lightning_logs/version_0/checkpoints/epoch=4-step=3320.ckpt
+Testing DataLoader 0: 100% 143/143 [00:25<00:00,  5.72it/s]
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│       test_ci_epoch       │    0.7002747654914856     │
+│      test_mae_epoch       │    11.451096534729004     │
+└───────────────────────────┴───────────────────────────┘
+[2023-04-16 20:24:24,849][HYDRA] 	#5 : model.d_model=64 model.alpha=0.2
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+You are using a CUDA device ('NVIDIA A100-SXM4-40GB') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
+Missing logger folder: /content/drive/MyDrive/dl4h_project/DynST/multirun/2023-04-16/19-19-31/0/5/lightning_logs
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+
+   | Name         | Type               | Params
+-----------------------------------------------------
+0  | embed_codes  | Linear             | 33.2 K
+1  | embed_static | Linear             | 4.4 K 
+2  | embed_vitals | Linear             | 1.7 K 
+3  | pos_encode   | PositionalEncoding | 0     
+4  | transformer  | TransformerEncoder | 150 K 
+5  | to_hazard_c  | Sequential         | 2.1 K 
+6  | train_mae    | MeanAbsoluteError  | 0     
+7  | val_mae      | MeanAbsoluteError  | 0     
+8  | val_ci       | ConcordanceIndex   | 0     
+9  | test_mae     | MeanAbsoluteError  | 0     
+10 | test_ci      | ConcordanceIndex   | 0     
+-----------------------------------------------------
+191 K     Trainable params
+0         Non-trainable params
+191 K     Total params
+0.765     Total estimated model params size (MB)
+Epoch 0: 100% 664/664 [02:06<00:00,  5.23it/s, v_num=0]
+Validation: 0it [00:00, ?it/s]
+Validation:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:  14% 20/143 [00:03<00:21,  5.77it/s]
+Validation DataLoader 0:  28% 40/143 [00:07<00:18,  5.61it/s]
+Validation DataLoader 0:  42% 60/143 [00:10<00:14,  5.59it/s]
+Validation DataLoader 0:  56% 80/143 [00:14<00:11,  5.57it/s]
+Validation DataLoader 0:  70% 100/143 [00:18<00:07,  5.55it/s]
+Validation DataLoader 0:  84% 120/143 [00:21<00:04,  5.55it/s]
+Validation DataLoader 0:  98% 140/143 [00:25<00:00,  5.56it/s]
+Epoch 0: 100% 664/664 [02:32<00:00,  4.35it/s, v_num=0]
+Epoch 1: 100% 664/664 [02:06<00:00,  5.26it/s, v_num=0]
+Validation: 0it [00:00, ?it/s]
+Validation:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:  14% 20/143 [00:03<00:20,  5.91it/s]
+Validation DataLoader 0:  28% 40/143 [00:06<00:17,  5.77it/s]
+Validation DataLoader 0:  42% 60/143 [00:10<00:14,  5.70it/s]
+Validation DataLoader 0:  56% 80/143 [00:14<00:11,  5.68it/s]
+Validation DataLoader 0:  70% 100/143 [00:17<00:07,  5.67it/s]
+Validation DataLoader 0:  84% 120/143 [00:21<00:04,  5.65it/s]
+Validation DataLoader 0:  98% 140/143 [00:24<00:00,  5.64it/s]
+Epoch 1: 100% 664/664 [02:31<00:00,  4.38it/s, v_num=0]
+Epoch 2: 100% 664/664 [02:05<00:00,  5.28it/s, v_num=0]
+Validation: 0it [00:00, ?it/s]
+Validation:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:  14% 20/143 [00:03<00:20,  5.90it/s]
+Validation DataLoader 0:  28% 40/143 [00:06<00:17,  5.77it/s]
+Validation DataLoader 0:  42% 60/143 [00:10<00:14,  5.72it/s]
+Validation DataLoader 0:  56% 80/143 [00:14<00:11,  5.69it/s]
+Validation DataLoader 0:  70% 100/143 [00:17<00:07,  5.68it/s]
+Validation DataLoader 0:  84% 120/143 [00:21<00:04,  5.67it/s]
+Validation DataLoader 0:  98% 140/143 [00:24<00:00,  5.65it/s]
+Epoch 2: 100% 664/664 [02:31<00:00,  4.40it/s, v_num=0]
+Epoch 3: 100% 664/664 [02:05<00:00,  5.28it/s, v_num=0]
+Validation: 0it [00:00, ?it/s]
+Validation:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:  14% 20/143 [00:03<00:20,  5.95it/s]
+Validation DataLoader 0:  28% 40/143 [00:06<00:17,  5.79it/s]
+Validation DataLoader 0:  42% 60/143 [00:10<00:14,  5.72it/s]
+Validation DataLoader 0:  56% 80/143 [00:14<00:11,  5.69it/s]
+Validation DataLoader 0:  70% 100/143 [00:17<00:07,  5.68it/s]
+Validation DataLoader 0:  84% 120/143 [00:21<00:04,  5.66it/s]
+Validation DataLoader 0:  98% 140/143 [00:24<00:00,  5.63it/s]
+Epoch 3: 100% 664/664 [02:31<00:00,  4.39it/s, v_num=0]
+Epoch 4: 100% 664/664 [02:05<00:00,  5.30it/s, v_num=0]
+Validation: 0it [00:00, ?it/s]
+Validation:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:   0% 0/143 [00:00<?, ?it/s]
+Validation DataLoader 0:  14% 20/143 [00:03<00:20,  5.88it/s]
+Validation DataLoader 0:  28% 40/143 [00:06<00:17,  5.76it/s]
+Validation DataLoader 0:  42% 60/143 [00:10<00:14,  5.72it/s]
+Validation DataLoader 0:  56% 80/143 [00:14<00:11,  5.70it/s]
+Validation DataLoader 0:  70% 100/143 [00:17<00:07,  5.68it/s]
+Validation DataLoader 0:  84% 120/143 [00:21<00:04,  5.67it/s]
+Validation DataLoader 0:  98% 140/143 [00:24<00:00,  5.65it/s]
+Epoch 4: 100% 664/664 [02:30<00:00,  4.41it/s, v_num=0]
+Epoch 4: 100% 664/664 [02:30<00:00,  4.41it/s, v_num=0]`Trainer.fit` stopped: `max_epochs=5` reached.
+Epoch 4: 100% 664/664 [02:30<00:00,  4.41it/s, v_num=0]
+You are using a CUDA device ('NVIDIA A100-SXM4-40GB') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
+Restoring states from the checkpoint path at /content/drive/MyDrive/dl4h_project/DynST/multirun/2023-04-16/19-19-31/0/5/lightning_logs/version_0/checkpoints/epoch=2-step=1992.ckpt
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Loaded model weights from the checkpoint at /content/drive/MyDrive/dl4h_project/DynST/multirun/2023-04-16/19-19-31/0/5/lightning_logs/version_0/checkpoints/epoch=2-step=1992.ckpt
+Testing DataLoader 0: 100% 143/143 [00:25<00:00,  5.72it/s]
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│       test_ci_epoch       │    0.7157701849937439     │
+│      test_mae_epoch       │    11.172209739685059     │
+└───────────────────────────┴───────────────────────────┘

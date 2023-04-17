@@ -7,7 +7,8 @@ from pytorch_lightning.callbacks import ModelCheckpoint
 
 from src.preprocess import Mimic3Pipeline
 from src.dataset import Mimic3Dataset, padded_collate
-  
+
+
 @hydra.main(config_path=".", config_name="config.yaml")
 def main(cfg=None):
     owd = get_original_cwd()
@@ -30,6 +31,7 @@ def main(cfg=None):
         (train_size, val_size, test_size),
         torch.Generator().manual_seed(cfg.train.seed)
     )
+
     def collate(x):
         return padded_collate(x, pad_index=cfg.model.pad, causal=cfg.causal)
 
@@ -47,19 +49,19 @@ def main(cfg=None):
             test_set, collate_fn=collate, batch_size=cfg.train.batch_size
         )
     model = instantiate(
-        cfg.model, n_codes=dataset.n_codes, n_demog = dataset.n_demog, 
+        cfg.model, n_codes=dataset.n_codes, n_demog=dataset.n_demog,
         n_vitals=dataset.n_vitals, causal=cfg.causal,
     )
     callbacks = [ModelCheckpoint(monitor="val_mae_epoch", mode="min")]
     trainer = pl.Trainer(
-        gpus=cfg.train.gpus,
+        accelerator=cfg.train.accelerator,
+        devices=cfg.train.devices,
         max_epochs=cfg.train.max_epochs,
         callbacks=callbacks,
     )
     trainer.fit(model, train_loader, val_loader)
     if test_size:
         trainer.test(dataloaders=test_loader)
-
 
 
 if __name__ == "__main__":

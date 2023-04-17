@@ -2,12 +2,11 @@ preprocess:
   do: False
   seed: 30
 
-
 train:
   train_frac: .7
   val_frac: .15
-  gpus:
-    - 1 
+  accelerator: "gpu"
+  devices: 1
   max_epochs: 5
   batch_size: 32
   seed: 0
