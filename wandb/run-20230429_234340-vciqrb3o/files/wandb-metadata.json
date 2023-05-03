@@ -1,0 +1,105 @@
+{
+    "os": "Linux-5.10.147+-x86_64-with-glibc2.31",
+    "python": "3.10.11",
+    "heartbeatAt": "2023-04-29T23:43:48.093687",
+    "startedAt": "2023-04-29T23:43:40.894204",
+    "docker": null,
+    "cuda": null,
+    "args": null,
+    "state": "running",
+    "program": "project_model.ipynb",
+    "colab": "https://colab.research.google.com/notebook#fileId=1moiwfr1u1oFNrzGwk4J5BYSNkMMEPjCV",
+    "git": {
+        "remote": "https://github.com/conlinm/DynST.git",
+        "commit": null
+    },
+    "email": null,
+    "root": "/content/drive/MyDrive/dl4h_project/DynST",
+    "host": "da49e12bf6a5",
+    "username": "root",
+    "executable": "/usr/bin/python3",
+    "cpu_count": 6,
+    "cpu_count_logical": 12,
+    "cpu_freq": {
+        "current": 2200.1739999999995,
+        "min": 0.0,
+        "max": 0.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 2200.174,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.174,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.174,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.174,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.174,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.174,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.174,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.174,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.174,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.174,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.174,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.174,
+            "min": 0.0,
+            "max": 0.0
+        }
+    ],
+    "disk": {
+        "total": 166.77415084838867,
+        "used": 23.793209075927734
+    },
+    "gpu": "NVIDIA A100-SXM4-40GB",
+    "gpu_count": 1,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA A100-SXM4-40GB",
+            "memory_total": 42949672960
+        }
+    ],
+    "memory": {
+        "total": 83.48343658447266
+    }
+}

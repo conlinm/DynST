@@ -1,0 +1,103 @@
+wandb_version: 1
+
+_wandb:
+  desc: null
+  value:
+    python_version: 3.10.11
+    cli_version: 0.15.0
+    framework: lightning
+    is_jupyter_run: true
+    is_kaggle_kernel: false
+    start_time: 1682811820.944811
+    t:
+      1:
+      - 1
+      - 9
+      - 41
+      - 55
+      2:
+      - 1
+      - 9
+      - 41
+      - 55
+      3:
+      - 2
+      - 7
+      - 23
+      4: 3.10.11
+      5: 0.15.0
+      8:
+      - 1
+      - 5
+    m:
+    - 1: trainer/global_step
+      6:
+      - 3
+    - 1: train_loss
+      5: 1
+      6:
+      - 1
+    - 1: train_mae
+      5: 1
+      6:
+      - 1
+    - 1: epoch
+      5: 1
+      6:
+      - 1
+    - 1: val_loss
+      5: 1
+      6:
+      - 1
+    - 1: val_mae_epoch
+      5: 1
+      6:
+      - 1
+    - 1: val_ci_epoch
+      5: 1
+      6:
+      - 1
+    - 1: test_mae_epoch
+      5: 1
+      6:
+      - 1
+    - 1: test_ci_epoch
+      5: 1
+      6:
+      - 1
+n_codes:
+  desc: null
+  value: 517
+n_vitals:
+  desc: null
+  value: 25
+n_demog:
+  desc: null
+  value: 2
+d_model:
+  desc: null
+  value: 32
+n_blocks:
+  desc: null
+  value: 3
+n_heads:
+  desc: null
+  value: 8
+dropout:
+  desc: null
+  value: 0.1
+pad:
+  desc: null
+  value: -100
+dynamic:
+  desc: null
+  value: true
+causal:
+  desc: null
+  value: false
+lr:
+  desc: null
+  value: 0.001
+alpha:
+  desc: null
+  value: 0.01
