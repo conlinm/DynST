@@ -66,7 +66,7 @@ The cox proportional hazards model is built and run in the `project_coxph.ipynb`
 
 #### Results
 
-I was able to reproduce the results of the origianl paper and confirm the conclusions.
+I was able to reproduce the results of the original paper and confirm the conclusions.
 
 ##### Predictive model results
 (reported in Mean Absolute Error)
@@ -78,7 +78,7 @@ I was able to reproduce the results of the origianl paper and confirm the conclu
 | DynST     | 11.17 +/- 0.72  | 11.19 +/- 0.24 | 0.2         |
 
 
-##### Causl Inference Results
+##### Causal Inference Results
 (the estimators of average treatment effect on RMST is reported as the bias +/- standard deviation)
 
 | Model          | 	tau = 8          | tau = 12         | tau = 16         |
