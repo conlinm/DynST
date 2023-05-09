@@ -1,0 +1,65 @@
+{
+    "os": "Linux-5.10.147+-x86_64-with-glibc2.31",
+    "python": "3.10.11",
+    "heartbeatAt": "2023-05-06T15:16:03.074480",
+    "startedAt": "2023-05-06T15:15:57.766274",
+    "docker": null,
+    "cuda": null,
+    "args": null,
+    "state": "running",
+    "program": "project_causal.ipynb",
+    "colab": "https://colab.research.google.com/notebook#fileId=1Tl8Vugd4NEM1M5WLYAK9TEk50RMpPWbQ",
+    "git": {
+        "remote": "https://github.com/conlinm/DynST.git",
+        "commit": null
+    },
+    "email": null,
+    "root": "/content/drive/MyDrive/dl4h_project/DynST",
+    "host": "aa4db60cf895",
+    "username": "root",
+    "executable": "/usr/bin/python3",
+    "cpu_count": 2,
+    "cpu_count_logical": 4,
+    "cpu_freq": {
+        "current": 2199.998,
+        "min": 0.0,
+        "max": 0.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 2199.998,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2199.998,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2199.998,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2199.998,
+            "min": 0.0,
+            "max": 0.0
+        }
+    ],
+    "disk": {
+        "total": 166.77415084838867,
+        "used": 23.466293334960938
+    },
+    "gpu": "Tesla T4",
+    "gpu_count": 1,
+    "gpu_devices": [
+        {
+            "name": "Tesla T4",
+            "memory_total": 16106127360
+        }
+    ],
+    "memory": {
+        "total": 25.454143524169922
+    }
+}

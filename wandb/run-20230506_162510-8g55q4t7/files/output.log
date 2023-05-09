@@ -1,0 +1,38 @@
+INFO:pytorch_lightning.utilities.rank_zero:GPU available: True (cuda), used: True
+INFO:pytorch_lightning.utilities.rank_zero:TPU available: False, using: 0 TPU cores
+INFO:pytorch_lightning.utilities.rank_zero:IPU available: False, using: 0 IPUs
+INFO:pytorch_lightning.utilities.rank_zero:HPU available: False, using: 0 HPUs
+INFO:pytorch_lightning.accelerators.cuda:LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+INFO:pytorch_lightning.callbacks.model_summary:
+   | Name         | Type               | Params
+-----------------------------------------------------
+0  | embed_codes  | Linear             | 16.6 K
+1  | embed_static | Linear             | 1.2 K
+2  | embed_vitals | Linear             | 832
+3  | pos_encode   | PositionalEncoding | 0
+4  | transformer  | TransformerEncoder | 38.2 K
+5  | to_hazard_c  | Sequential         | 545
+6  | train_mae    | MeanAbsoluteError  | 0
+7  | val_mae      | MeanAbsoluteError  | 0
+8  | val_ci       | ConcordanceIndex   | 0
+9  | test_mae     | MeanAbsoluteError  | 0
+10 | test_ci      | ConcordanceIndex   | 0
+-----------------------------------------------------
+57.3 K    Trainable params
+0         Non-trainable params
+57.3 K    Total params
+0.229     Total estimated model params size (MB)
+<ipython-input-3-7e0b4fb2a567>:33: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  item["codes"] = torch.tensor(
+/usr/local/lib/python3.10/dist-packages/torch/nn/functional.py:4999: UserWarning: Support for mismatched src_key_padding_mask and src_mask is deprecated. Use same type for both instead.
+  warnings.warn(
+/usr/local/lib/python3.10/dist-packages/torch/nn/modules/transformer.py:544: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at ../aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._transformer_encoder_layer_fwd(
+/usr/local/lib/python3.10/dist-packages/torch/nn/functional.py:4999: UserWarning: Support for mismatched key_padding_mask and attn_mask is deprecated. Use same type for both instead.
+  warnings.warn(
+INFO:pytorch_lightning.utilities.rank_zero:`Trainer.fit` stopped: `max_epochs=5` reached.
+/usr/local/lib/python3.10/dist-packages/pytorch_lightning/trainer/connectors/checkpoint_connector.py:148: UserWarning: `.test(ckpt_path=None)` was called without a model. The best model of the previous `fit` call will be used. You can pass `.test(ckpt_path='best')` to use the best model or `.test(ckpt_path='last')` to use the last model. If you pass a value, this warning will be silenced.
+  rank_zero_warn(
+INFO:pytorch_lightning.utilities.rank_zero:Restoring states from the checkpoint path at ./mimic3-survival/8g55q4t7/checkpoints/epoch=4-step=3320.ckpt
+INFO:pytorch_lightning.accelerators.cuda:LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+INFO:pytorch_lightning.utilities.rank_zero:Loaded model weights from the checkpoint at ./mimic3-survival/8g55q4t7/checkpoints/epoch=4-step=3320.ckpt
